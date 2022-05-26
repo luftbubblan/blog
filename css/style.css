@@ -1,0 +1,36 @@
+body {
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#posts-tbl { 
+	border-collapse: collapse; 
+	margin-bottom: 40px;
+	margin: 0 auto;
+}
+
+#posts-tbl tr,
+#posts-tbl td,
+#posts-tbl th {
+	border: 1px solid black;
+	padding: 10px;
+}
+
+.message {
+	padding: 0.75rem 1.25rem;
+	margin-bottom: 1rem;
+	border-radius: 0.25rem;
+}
+
+.success {
+	color: #155724;
+	background-color: #d4edda;
+	border-color: #c3e6cb;
+}
+
+.error {
+	color: #721c24;
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
+}
