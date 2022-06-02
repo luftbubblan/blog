@@ -24,7 +24,7 @@
 
     if (isset($_GET['deleted'])) {
         $message = '
-            <div class="message error">
+            <div class="alert alert-warning">
                 Post successfully deleted.
             </div>
         ';
@@ -32,7 +32,7 @@
 
     if (isset($_GET['created'])) {
         $message = '
-            <div class="message success">
+            <div class="alert alert-success">
                 Post successfully created.
             </div>
         ';
@@ -40,7 +40,7 @@
 
     if (isset($_GET['updated'])) {
         $message = '
-            <div class="message success">
+            <div class="alert alert-success">
                 Post successfully updated.
             </div>
         ';
@@ -57,11 +57,16 @@
     include('layout/header.php')
 ?>
 
-<h1>Admin</h1>
-<a href="home.php">Home</a>
-<br>
-
-<a href="createPost.php">Make a new post</a>
+<div class="header">
+    <h1>Admin</h1>
+    <div class="divInHeader">
+        <a href="home.php">Home</a>
+        <form action="createPost.php">
+            <input type="submit" value="Create new post" class="btn btn-createNewPost">
+        </form>
+    </div>
+</div>
+<!-- <a href="createPost.php">Create new post</a> -->
 
 <?=$message?>
 
@@ -69,10 +74,10 @@
     <thead>
         <tr>
             <th>Title</th>
-            <th>Content</th>
+            <th>Content <div class='notbold'>(first 100 characters)</div></th>
             <th>Author</th>
-            <th>Date</th>
-            <th>Action</th>
+            <th class="dateColumn">Published</th>
+            <th>Actions</th>
         </tr>
     </thead>
 
@@ -80,7 +85,7 @@
         <?php foreach ($posts as $post) { ?>
             <tr>
                 <td><?= htmlentities($post->title) ?></td>
-                <td><?= htmlentities($post->content) ?></td>
+                <td><?= substr(htmlentities($post->content), 0, 100) ?></td>
                 <td><?= htmlentities($post->author) ?></td>
                 <td><?= substr($post->published_date, 0, 10) ?></td>
 
@@ -88,13 +93,13 @@
                     <!-- Edit -->
                     <form action="edit.php" method="POST">
                         <input type="hidden" name="ID" value="<?= htmlentities($post->id) ?>">
-                        <button>Edit</button>
+                        <input type="submit" value="Edit" class="btn btn-warning">
                     </form>
 
                     <!-- Delete -->
                     <form action="" method="POST" id="deleteBtn">
                         <input type="hidden" name="ID" value="<?= htmlentities($post->id) ?>">
-                        <input type="submit" name="deletePostBtn" value="Delete">
+                        <input type="submit" name="deletePostBtn" value="Delete" class="btn btn-danger">
                     </form>
                 </td>
             </tr>
