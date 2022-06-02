@@ -16,19 +16,25 @@
 
         if (empty($title)) {
             $message .= '
-                Title must not be empty.<br>
+                <div class="alert alert-danger">
+                    Title must not be empty.
+                </div>
             ';
             $empty = "empty";
 
         } if (empty($content)) {
             $message .= '
-                Content must not be empty.<br>
+                <div class="alert alert-danger">
+                    Content must not be empty.
+                </div>
             ';
             $empty = "empty";
 
         } if (empty($author)) {
             $message .= '
-                Author must not be empty.
+                <div class="alert alert-danger">
+                    Author must not be empty.
+                </div>
             ';
             $empty = "empty";
 
@@ -50,19 +56,18 @@
     include('layout/header.php');
 ?>
 
-<h1>Create Post</h1>
-<a href="admin.php">Admin</a>
-
-<div class="alert error">
-    <?=$message?>
+<div class="header createPostHeader">
+    <h1>Create Post</h1>
+    <a href="admin.php" class="otherPage">Admin</a>
 </div>
 
+<?=$message?>
 
 <form action="" method="POST" id="createPostForm">
-    <input type="text" name="title" placeholder="Title" value="<?=$_POST['title']?>">
-    <textarea name="content" form="createPostForm" placeholder="Content"><?=$_POST['content']?></textarea>
-    <input type="text" name="author" placeholder="Author" value="<?=$_POST['author']?>">
-    <input type="submit" name="createPostBtn" value="Create post">
+    <input type="text" name="title" placeholder="Title" value="<?=$_POST['title']?>" class="textfield">
+    <textarea name="content" form="createPostForm" placeholder="Content" class="textfield"><?=$_POST['content']?></textarea>
+    <input type="text" name="author" placeholder="Author" value="<?=$_POST['author']?>" class="textfield"><br>
+    <input type="submit" name="createPostBtn" value="Create post" class="btn btn-success">
 </form>
     
 <?php include('layouts/footer.php') ?>

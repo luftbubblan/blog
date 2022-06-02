@@ -22,7 +22,7 @@
 
         if (empty($content)) {
             $message = '
-                <div class="message error">
+                <div class="alert alert-danger">
                     Content must not be empty.
                 </div>
             ';
@@ -45,20 +45,24 @@
     include('layout/header.php')
 ?>
 
-<h1>Edit Post</h1>
-<a href="admin.php">Admin</a>
+<div class="header">
+    <h1>Edit Post</h1>
+    <a href="admin.php" class="otherPage">Admin</a>
+</div>
 
 <?=$message?>
 
-<h3><?= htmlentities($post->title) ?></h3>
-<textarea name="content" form="editForm"><?= trim($post->content) ?></textarea>
-<p>Posted by: <?= htmlentities($post->author) ?></p>
-<i><?= substr($post->published_date, 0, 10) ?>. ID: <?= htmlentities($post->id) ?></i>
+<div class="wrapper">
+    <h2><?= htmlentities($post->title) ?></h2>
+    <textarea name="content" form="editForm" class="textfield"><?= trim($post->content) ?></textarea>
+    <p>Posted by: <?= htmlentities($post->author) ?></p>
+    <i><?= substr($post->published_date, 0, 10) ?>. ID: <?= htmlentities($post->id) ?></i>
 
 
-<form action="" method="POST" id="editForm">
-    <input type="hidden" name="ID" value="<?= htmlentities($post->id) ?>">
-    <input type="submit" name="editPostBtn" value="Save">
-</form>
+    <form action="" method="POST" id="editForm">
+        <input type="hidden" name="ID" value="<?= htmlentities($post->id) ?>">
+        <input type="submit" name="editPostBtn" value="Save" class="btn btn-success">
+    </form>
+</div>
 
 <?php include('layouts/footer.php') ?>

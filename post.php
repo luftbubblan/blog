@@ -1,11 +1,7 @@
 <?php
-    // echo "<pre>";
-    // print_r($_POST);
-    // echo "</pre>";
-
     require('dbconnection.php');
 
-    $pageTitle="Home";
+    $pageTitle="Single Post";
 
     // READ
     $sql = "
@@ -21,7 +17,9 @@
     include('layout/header.php')
 ?>
 
-<a href="home.php">Home</a>
+<a href="home.php" class="back">&#8592; Go back</a>
+<div class="header"></div>
+
 
 <h1><?= htmlentities($post->title) ?></h1>
 <p><?= htmlentities($post->content) ?></p>
